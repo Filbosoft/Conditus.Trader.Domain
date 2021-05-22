@@ -16,7 +16,7 @@ namespace Conditus.Trader.Domain.Entities
         public string PortfolioId { get; set; }
         [DynamoDBHashKey]
         [Required]
-        public string CreatedBy { get; set; }
+        public string OwnerId { get; set; }
         [DynamoDBProperty]
         [Required]
         public OrderType OrderType { get; set; } //Type is a keyword in dynamodb and can therefore not be used in expressions
