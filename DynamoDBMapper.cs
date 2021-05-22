@@ -17,20 +17,7 @@ namespace Conditus.Trader.Domain
                 var propertyValue = property.GetValue(entity);
                 if (propertyValue == null) continue;
 
-                AttributeValue mapValue;
-
-                if (propertyType == typeof(decimal) || propertyType == typeof(int) || propertyType == typeof(long))
-                    mapValue = new AttributeValue { N = propertyValue.ToString() };
-                else if (propertyType.IsEnum)
-                    mapValue = new AttributeValue { N = ((int)propertyValue).ToString() };
-                else if (propertyType == typeof(string))
-                    mapValue = new AttributeValue { S = (string)propertyValue };
-                else if (propertyType == typeof(DateTime) || propertyType == typeof(DateTime?))
-                    mapValue = new AttributeValue { S = propertyValue.ToString() };
-                // else if (propertyValue is IEnumerable)
-                //     mapValue = new AttributeValue{ M = ListToMap((IEnumerable<object>) propertyValue)};
-                else
-                    mapValue = new AttributeValue { M = GetAttributeMap(propertyValue) };
+                AttributeValue mapValue = GetMapValue(propertyType, propertyValue);
 
                 map.Add(property.Name, mapValue);
             }
@@ -38,20 +25,22 @@ namespace Conditus.Trader.Domain
             return map;
         }
 
-        // private static Dictionary<string, AttributeValue> ListToMap(IEnumerable<object> entites)
-        // {
-        //     var map = new Dictionary<string, AttributeValue>();
+        private static AttributeValue GetMapValue(Type propertyType, object propertyValue)
+        {
+            if (propertyType == typeof(decimal) || propertyType == typeof(int) || propertyType == typeof(long))
+                return new AttributeValue { N = propertyValue.ToString() };
 
-        //     foreach (var entity in entites)
-        //     {
-        //         var id = ((BaseModel) entity).Id;
-        //         var attributeMap = GetAttributeMap(entity);
+            if (propertyType.IsEnum)
+                return new AttributeValue { N = ((int)propertyValue).ToString() };
 
-        //         map.Add(id, new AttributeValue{M = attributeMap});
-        //     }
+            if (propertyType == typeof(string))
+                return new AttributeValue { S = (string)propertyValue };
 
-        //     return map;
-        // }
+            if (propertyType == typeof(DateTime) || propertyType == typeof(DateTime?))
+                return new AttributeValue { S = propertyValue.ToString() };
+
+            return new AttributeValue { M = GetAttributeMap(propertyValue) };
+        }
 
         public static T MapAttributeMapToEntity<T>(Dictionary<string, AttributeValue> attributeMap)
             where T : new()
@@ -66,28 +55,35 @@ namespace Conditus.Trader.Domain
                 var attributeValue = attributeMap.GetAttributeValue(property.Name);
                 if (attributeValue == null) continue;
 
-                object propertyValue;
+                object propertyValue = GetPropertyValue(property.PropertyType, attributeValue);
 
-                var propertyType = property.PropertyType;
-
-                if (propertyType == typeof(decimal))
-                    propertyValue = Convert.ToDecimal(attributeValue.N);
-                else if (propertyType == typeof(int))
-                    propertyValue = Convert.ToInt32(attributeValue.N);
-                else if (propertyType.IsEnum)
-                    propertyValue = Enum.ToObject(propertyType, int.Parse(attributeValue.N));
-                else if (propertyType == typeof(string))
-                    propertyValue = attributeValue.S;
-                else if (propertyType == typeof(DateTime) || propertyType == typeof(DateTime?))
-                    propertyValue = GetDateTimeFromUnixTimeMS(attributeValue.N);
-                else if (propertyType == typeof(object))
-                    propertyValue = Convert.ChangeType(MapAttributeMapToEntity<object>(attributeValue.M), propertyType);
-                else continue;
-
-                entityProperty.SetValue(entity, propertyValue);
+                if(propertyValue != null) entityProperty.SetValue(entity, propertyValue);
             }
 
             return entity;
+        }
+
+        private static object GetPropertyValue(Type propertyType, AttributeValue attributeValue)
+        {
+            if (propertyType == typeof(decimal))
+                return Convert.ToDecimal(attributeValue.N);
+
+            if (propertyType == typeof(int))
+                return Convert.ToInt32(attributeValue.N);
+
+            if (propertyType.IsEnum)
+                return Enum.ToObject(propertyType, int.Parse(attributeValue.N));
+
+            if (propertyType == typeof(string))
+                return attributeValue.S;
+            
+            if (propertyType == typeof(DateTime) || propertyType == typeof(DateTime?))
+                return GetDateTimeFromUnixTimeMS(attributeValue.N);
+            
+            if (propertyType == typeof(object))
+                return Convert.ChangeType(MapAttributeMapToEntity<object>(attributeValue.M), propertyType);
+
+            return null;
         }
 
         public static DateTime GetDateTimeFromUnixTimeMS(string unixTime)
