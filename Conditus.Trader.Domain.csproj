@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>Conditus.Trader.Domain</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>The Conditus team</Authors>
+    <Company>Conditus</Company>
+    <Description>
+      This nuget package includes the models produced by the various microservices.
+      It is to be implemented in each of the micro services to ensure it's using the correct model,
+      and to avoid having to update models in all our services if one changes,
+      it should as simple as updating this nuget package, and potentially using a new version namespace.
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.22" />
+  </ItemGroup>
+
+</Project>
