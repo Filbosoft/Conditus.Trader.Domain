@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Amazon.DynamoDBv2.DataModel;
@@ -9,18 +10,22 @@ namespace Conditus.Trader.Domain.Entities
     [DynamoDBTable("Portfolios")]
     public class PortfolioEntity
     {
-        [DynamoDBHashKey]
+        [Required]
+        [DynamoDBProperty]
         public string Id { get; set; }
         [Required]
         [DynamoDBProperty]
         public string Name { get; set; }
         [Required]
-        [DynamoDBRangeKey]
+        [DynamoDBHashKey]
         public string OwnerId { get; set; }
         [Required]
         [DynamoDBProperty]
         public decimal Capital { get; set; }
         [DynamoDBProperty(typeof(ListMapPropertyConverter<PortfolioAsset>))]
         public List<PortfolioAsset> Assets { get; set; } = new List<PortfolioAsset>();
+        [Required]
+        [DynamoDBRangeKey(typeof(DateTimePropertyConverter))]
+        public DateTime CreatedAt { get; set; }
     }
 }
