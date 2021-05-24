@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Amazon.DynamoDBv2.DataModel;
+using Conditus.DynamoDBMapper.Attributes;
+using Conditus.DynamoDBMapper.PropertyConverters;
 using Conditus.Trader.Domain.Models;
-using Conditus.Trader.Domain.PropertyConverters;
 
 namespace Conditus.Trader.Domain.Entities
 {
@@ -23,6 +24,7 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBProperty]
         public decimal Capital { get; set; }
         [DynamoDBProperty(typeof(ListMapPropertyConverter<PortfolioAsset>))]
+        [MapList]
         public List<PortfolioAsset> Assets { get; set; } = new List<PortfolioAsset>();
         [Required]
         [DynamoDBRangeKey(typeof(DateTimePropertyConverter))]

@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Amazon.DynamoDBv2.DataModel;
+using Conditus.DynamoDBMapper.PropertyConverters;
 using Conditus.Trader.Domain.Enums;
-using Conditus.Trader.Domain.PropertyConverters;
 
 namespace Conditus.Trader.Domain.Entities
 {
