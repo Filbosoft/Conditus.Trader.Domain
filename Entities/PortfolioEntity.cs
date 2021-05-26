@@ -16,7 +16,7 @@ namespace Conditus.Trader.Domain.Entities
         public string Id { get; set; }
         [Required]
         [DynamoDBProperty]
-        public string PortfolioName { get; set; } // Name is a dynamodb keyword and can therefor not be used in expressions
+        public string PortfolioName { get; set; }
         [Required]
         [DynamoDBHashKey]
         public string OwnerId { get; set; }

@@ -13,10 +13,10 @@ namespace Conditus.Trader.Domain.Entities
         public string Symbol { get; set; }
         [DynamoDBProperty]
         [Required]
-        public string Name { get; set; }
+        public string AssetName { get; set; }
         [DynamoDBProperty]
         [Required]
-        public AssetType Type { get; set; }
+        public AssetType AssetType { get; set; }
         [DynamoDBProperty]
         [Required]
         public Exchange Exchange { get; set; }
