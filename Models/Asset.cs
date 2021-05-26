@@ -9,8 +9,6 @@ namespace Conditus.Trader.Domain.Models
         public AssetType Type { get; set; }
         public string Exchange { get; set; }
         public Currency Currency { get; set; }
-        public decimal Value { get; set; }
-        //Growth?
     }
 
     public class AssetOverview
@@ -18,7 +16,5 @@ namespace Conditus.Trader.Domain.Models
         public string Symbol { get; set; }
         public string Name { get; set; }
         public AssetType Type { get; set; }
-        public decimal Value { get; set; }
-        //Growth?
     }
 }
