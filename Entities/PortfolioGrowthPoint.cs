@@ -14,6 +14,6 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBProperty]
         public string OwnerId { get; set; }
         [DynamoDBRangeKey(typeof(DateTimePropertyConverter))]
-        public DateTime Timestamp { get; set; }
+        public DateTime GrowthPointTimestamp { get; set; }
     }
 }
