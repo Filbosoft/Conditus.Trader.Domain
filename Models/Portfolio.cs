@@ -8,6 +8,7 @@ namespace Conditus.Trader.Domain.Models
         public string Name { get; set; }
         public decimal Capital { get; set; }
         public List<PortfolioAsset> Assets { get; set; }
+        public string CurrencyCode { get; set; }
     }
 
     public class PortfolioOverview
