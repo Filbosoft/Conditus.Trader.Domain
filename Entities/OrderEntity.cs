@@ -36,6 +36,9 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBProperty]
         [Required]
         public decimal Price { get; set; }
+        [DynamoDBProperty]
+        [Required]
+        public string Currency { get; set; }
         [DynamoDBRangeKey(typeof(DateTimePropertyConverter))]
         [Required]
         public DateTime CreatedAt { get; set; }
