@@ -1,26 +1,27 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Amazon.DynamoDBv2.DataModel;
-using Conditus.DynamoDBMapper.PropertyConverters;
+using Conditus.DynamoDB.MappingExtensions.PropertyConverters;
 using Conditus.Trader.Domain.Enums;
+using Conditus.Trader.Domain.Entities.LocalSecondaryIndexes;
 
 namespace Conditus.Trader.Domain.Entities
 {
     [DynamoDBTable("Orders")]
     public class OrderEntity
     {
-        [DynamoDBProperty]
+        [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderIdIndex)]
         public string Id { get; set; }
-        [DynamoDBProperty]
+        [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderPortfolioIndex)]
         [Required]
         public string PortfolioId { get; set; }
         [DynamoDBHashKey]
         [Required]
         public string OwnerId { get; set; }
-        [DynamoDBProperty]
+        [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderTypeIndex)]
         [Required]
         public OrderType OrderType { get; set; } //Type is a keyword in dynamodb and can therefore not be used in expressions
-        [DynamoDBProperty]
+        [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderAssetIndex)]
         [Required]
         public string AssetSymbol { get; set; }
         [DynamoDBProperty]
@@ -31,7 +32,8 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBProperty]
         [Required]
         public int Quantity { get; set; }
-        [DynamoDBProperty] 
+        [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderStatusIndex)]
+        [DynamoDBGlobalSecondaryIndexHashKey(OrderGlobalSecondaryIndexes.OrderStatusIndex)]
         public OrderStatus OrderStatus { get; set; } //Status is a keyword in dynamodb and can therefore not be used in expressions
         [DynamoDBProperty]
         [Required]
@@ -40,6 +42,7 @@ namespace Conditus.Trader.Domain.Entities
         [Required]
         public string CurrencyCode { get; set; }
         [DynamoDBRangeKey(typeof(DateTimePropertyConverter))]
+        [DynamoDBGlobalSecondaryIndexRangeKey(OrderGlobalSecondaryIndexes.OrderStatusIndex)]
         [Required]
         public DateTime CreatedAt { get; set; }
         [DynamoDBProperty(typeof(DateTimePropertyConverter))]

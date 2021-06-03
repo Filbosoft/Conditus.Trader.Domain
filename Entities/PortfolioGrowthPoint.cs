@@ -1,6 +1,6 @@
 using System;
 using Amazon.DynamoDBv2.DataModel;
-using Conditus.DynamoDBMapper.PropertyConverters;
+using Conditus.DynamoDB.MappingExtensions.PropertyConverters;
 
 namespace Conditus.Trader.Domain.Entities
 {

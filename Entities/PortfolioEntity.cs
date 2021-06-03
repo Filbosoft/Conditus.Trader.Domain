@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Amazon.DynamoDBv2.DataModel;
-using Conditus.DynamoDBMapper.Attributes;
-using Conditus.DynamoDBMapper.PropertyConverters;
+using Conditus.DynamoDB.MappingExtensions.Attributes;
+using Conditus.DynamoDB.MappingExtensions.PropertyConverters;
 using Conditus.Trader.Domain.Models;
 
 namespace Conditus.Trader.Domain.Entities
