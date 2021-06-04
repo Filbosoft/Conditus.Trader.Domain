@@ -15,5 +15,7 @@ namespace Conditus.Trader.Domain.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public decimal Capital { get; set; }
+        public string CurrencyCode { get; set; }
     }
 }
