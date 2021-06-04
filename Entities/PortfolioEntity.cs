@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Amazon.DynamoDBv2.DataModel;
 using Conditus.DynamoDB.MappingExtensions.Attributes;
 using Conditus.DynamoDB.MappingExtensions.PropertyConverters;
+using Conditus.Trader.Domain.Entities.Indexes;
 using Conditus.Trader.Domain.Models;
 
 namespace Conditus.Trader.Domain.Entities
@@ -12,7 +13,7 @@ namespace Conditus.Trader.Domain.Entities
     public class PortfolioEntity
     {
         [Required]
-        [DynamoDBProperty]
+        [DynamoDBLocalSecondaryIndexRangeKey(PortfolioLocalSecondaryIndexes.PortfolioIdIndex)]
         public string Id { get; set; }
         [Required]
         [DynamoDBProperty]
