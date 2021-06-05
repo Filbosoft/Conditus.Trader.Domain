@@ -27,8 +27,8 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBProperty]
         [Required]
         public string CurrencyCode { get; set; }
-        [DynamoDBProperty(typeof(ListMapPropertyConverter<PortfolioAsset>))]
-        [MapList]
+        [DynamoDBProperty(typeof(DynamoDBListMapPropertyConverter<PortfolioAsset>))]
+        [DynamoDBMapList]
         public List<PortfolioAsset> Assets { get; set; } = new List<PortfolioAsset>();
         [Required]
         [DynamoDBRangeKey(typeof(DateTimePropertyConverter))]

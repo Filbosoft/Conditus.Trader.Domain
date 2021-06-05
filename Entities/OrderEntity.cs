@@ -4,6 +4,7 @@ using Amazon.DynamoDBv2.DataModel;
 using Conditus.DynamoDB.MappingExtensions.PropertyConverters;
 using Conditus.Trader.Domain.Enums;
 using Conditus.Trader.Domain.Entities.LocalSecondaryIndexes;
+using Conditus.DynamoDB.MappingExtensions.Attributes;
 
 namespace Conditus.Trader.Domain.Entities
 {
@@ -13,15 +14,18 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderIdIndex)]
         public string Id { get; set; }
         [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderPortfolioIndex)]
+        [DynamoDBSelfContainingCompositeKey(nameof(CreatedAt))]
         [Required]
         public string PortfolioId { get; set; }
         [DynamoDBHashKey]
         [Required]
         public string OwnerId { get; set; }
         [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderTypeIndex)]
+        [DynamoDBSelfContainingCompositeKey(nameof(CreatedAt))]
         [Required]
         public OrderType OrderType { get; set; } //Type is a keyword in dynamodb and can therefore not be used in expressions
         [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderAssetIndex)]
+        [DynamoDBSelfContainingCompositeKey(nameof(CreatedAt))]
         [Required]
         public string AssetSymbol { get; set; }
         [DynamoDBProperty]
@@ -34,6 +38,7 @@ namespace Conditus.Trader.Domain.Entities
         public int Quantity { get; set; }
         [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderStatusIndex)]
         [DynamoDBGlobalSecondaryIndexHashKey(OrderGlobalSecondaryIndexes.OrderStatusIndex)]
+        [DynamoDBSelfContainingCompositeKey(nameof(CreatedAt))]
         public OrderStatus OrderStatus { get; set; } //Status is a keyword in dynamodb and can therefore not be used in expressions
         [DynamoDBProperty]
         [Required]
