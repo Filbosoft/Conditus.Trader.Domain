@@ -40,7 +40,7 @@ namespace Conditus.Trader.Domain.Entities
         public OrderStatus OrderStatus { get; set; } //Status is a keyword in dynamodb and can therefore not be used in expressions
         [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderStatusIndex)]
         [DynamoDBCompositeKey(nameof(OrderStatus), nameof(CreatedAt))]
-        public string OrderStatusCreateAtCompositeKey { get; set; }
+        public string OrderStatusCreatedAtCompositeKey { get; set; }
         [DynamoDBProperty]
         [Required]
         public decimal Price { get; set; }
