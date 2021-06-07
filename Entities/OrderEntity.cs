@@ -36,10 +36,10 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBProperty]
         [Required]
         public int Quantity { get; set; }
-        [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderStatusIndex)]
         [DynamoDBGlobalSecondaryIndexHashKey(OrderGlobalSecondaryIndexes.OrderStatusIndex)]
-        [DynamoDBSelfContainingCompositeKey(nameof(CreatedAt))]
         public OrderStatus OrderStatus { get; set; } //Status is a keyword in dynamodb and can therefore not be used in expressions
+        [DynamoDBLocalSecondaryIndexRangeKey(OrderLocalSecondaryIndexes.UserOrderStatusIndex)]
+        public string OrderStatusCreateAtCompositeKey { get; set; }
         [DynamoDBProperty]
         [Required]
         public decimal Price { get; set; }

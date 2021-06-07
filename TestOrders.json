@@ -1,0 +1,187 @@
+{
+    "Orders": [
+        {
+            "PutRequest":{
+                "Item": {
+                    "AssetSymbol": {
+                        "S": "AGF-B.XCSE#1622277450958"
+                    },
+                    "OrderType": {
+                        "S": "0#1622277450958"
+                    },
+                    "ExpiresAt": {
+                        "N": "1622363845493"
+                    },
+                    "AssetName": {
+                        "S": "AGF A/S"
+                    },
+                    "OwnerId": {
+                        "S": "267a63f7-538e-434b-9ff4-057e5dcd0071"
+                    },
+                    "AssetType": {
+                        "N": "0"
+                    },
+                    "Price": {
+                        "N": "101"
+                    },
+                    "OrderStatus": {
+                        "N": "0"
+                    },
+                    "OrderStatusCreatedAtCompositeKey": {
+                        "S": "0#1622277450958"
+                    },
+                    "Quantity": {
+                        "N": "101"
+                    },
+                    "Id": {
+                        "S": "7983b606-21db-4f4a-92df-6cb1a82fb258"
+                    },
+                    "PortfolioId": {
+                        "S": "a82b1593-25b6-4bbf-8244-7aa6bc372075#1622277450958"
+                    },
+                    "CreatedAt": {
+                        "N": "1622277450958"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest":{
+                "Item": {
+                    "AssetSymbol": {
+                        "S": "AGF-B.XCSE#1621405277004"
+                    },
+                    "OrderType": {
+                        "S": "0#1621405277004"
+                    },
+                    "ExpiresAt": {
+                        "N": "1634900323000"
+                    },
+                    "AssetName": {
+                        "S": "AGF A/S"
+                    },
+                    "AssetType": {
+                        "N": "0"
+                    },
+                    "CompletedAt": {
+                        "N": "1622408254040"
+                    },
+                    "Quantity": {
+                        "N": "20"
+                    },
+                    "PortfolioId": {
+                        "S": "5d19050a-8d64-4a52-89e2-0db7bd7143bc#1621405277004"
+                    },
+                    "OwnerId": {
+                        "S": "55f532d8-cf2c-4340-bab0-27e7b69d6dd8"
+                    },
+                    "Price": {
+                        "N": "0.741"
+                    },
+                    "OrderStatus": {
+                        "N": "1"
+                    },
+                    "OrderStatusCreatedAtCompositeKey": {
+                        "S": "1#1621405277004"
+                    },
+                    "Id": {
+                        "S": "e3b32be7-b306-4245-9028-0f870a3a5d83"
+                    },
+                    "CreatedAt": {
+                        "N": "1621405277004"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest":{
+                "Item": {
+                    "AssetSymbol": {
+                        "S": "ORSTED.XCSE#1622626264537"
+                    },
+                    "OrderType": {
+                        "S": "0#1622626264537"
+                    },
+                    "ExpiresAt": {
+                        "N": "1622712670045"
+                    },
+                    "AssetName": {
+                        "S": "ORSTED A/S"
+                    },
+                    "OwnerId": {
+                        "S": "55f532d8-cf2c-4340-bab0-27e7b69d6dd8"
+                    },
+                    "AssetType": {
+                        "N": "0"
+                    },
+                    "Price": {
+                        "N": "100.123"
+                    },
+                    "OrderStatus": {
+                        "N": "0"
+                    },
+                    "OrderStatusCreatedAtCompositeKey": {
+                        "S": "0#1622626264537"
+                    },
+                    "Quantity": {
+                        "N": "100"
+                    },
+                    "Id": {
+                        "S": "0baf5cc3-bd68-47ee-aa9f-dfe90f994d1f"
+                    },
+                    "PortfolioId": {
+                        "S": "5d19050a-8d64-4a52-89e2-0db7bd7143bc#1622626264537"
+                    },
+                    "CreatedAt": {
+                        "N": "1622626264537"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest":{
+                "Item": {
+                    "AssetSymbol": {
+                        "S": "AAPL#1625405277004"
+                    },
+                    "OrderType": {
+                        "S": "0#1625405277004"
+                    },
+                    "ExpiresAt": {
+                        "N": "1638900323000"
+                    },
+                    "AssetName": {
+                        "S": "Apple Inc."
+                    },
+                    "OwnerId": {
+                        "S": "55f532d8-cf2c-4340-bab0-27e7b69d6dd8"
+                    },
+                    "AssetType": {
+                        "N": "0"
+                    },
+                    "Price": {
+                        "N": "124.28"
+                    },
+                    "OrderStatus": {
+                        "N": "0"
+                    },
+                    "OrderStatusCreatedAtCompositeKey": {
+                        "S": "0#1625405277004"
+                    },
+                    "Quantity": {
+                        "N": "100"
+                    },
+                    "Id": {
+                        "S": "e3b32be7-b306-4245-9028-0f870a3a5d83"
+                    },
+                    "PortfolioId": {
+                        "S": "5d19050a-8d64-4a52-89e2-0db7bd7143bc#1625405277004"
+                    },
+                    "CreatedAt": {
+                        "N": "1625405277004"
+                    }
+                }
+            }
+        }
+    ]
+}
