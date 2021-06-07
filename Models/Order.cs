@@ -7,6 +7,7 @@ namespace Conditus.Trader.Domain.Models
     {
         public string Id { get; set; }
         public string PortfolioId { get; set; }
+        public string PortfolioName { get; set; }
         public OrderType Type { get; set; }
         public string AssetSymbol { get; set; }
         public AssetType AssetType { get; set; }
@@ -14,6 +15,7 @@ namespace Conditus.Trader.Domain.Models
         public int Quantity { get; set; }
         public OrderStatus Status { get; set; }
         public decimal Price { get; set; }
+        public string CurrencyCode { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? CompletedAt { get; set; }
         public DateTime ExpiresAt { get; set; }
@@ -22,6 +24,8 @@ namespace Conditus.Trader.Domain.Models
     public class OrderOverview
     {
         public string Id { get; set; }
+        public string PortfolioId { get; set; }
+        public string PortfolioName { get; set; }
         public OrderType Type { get; set; }
         public string AssetSymbol { get; set; }
         public AssetType AssetType { get; set; }
