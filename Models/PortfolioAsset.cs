@@ -8,5 +8,6 @@ namespace Conditus.Trader.Domain.Models
         public string Symbol { get; set; }
         public string Name { get; set; }
         public int Quantity { get; set; }
+        public decimal AverageBuyPrice { get; set; }
     }
 }
