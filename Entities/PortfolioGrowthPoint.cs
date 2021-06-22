@@ -12,6 +12,8 @@ namespace Conditus.Trader.Domain.Entities
         [DynamoDBProperty]
         public decimal CurrentGrowth { get; set; }
         [DynamoDBProperty]
+        public decimal CurrentMarketValue { get; set; }
+        [DynamoDBProperty]
         public string OwnerId { get; set; }
         [DynamoDBRangeKey(typeof(DateTimePropertyConverter))]
         public DateTime GrowthPointTimestamp { get; set; }
