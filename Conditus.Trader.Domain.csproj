@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Conditus.DynamoDB.QueryExtensions" Version="1.0.0" />
+    <PackageReference Include="Conditus.DynamoDB.QueryExtensions" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
